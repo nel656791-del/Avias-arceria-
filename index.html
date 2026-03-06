@@ -9,6 +9,11 @@
     <title>flowers</title>
 </head>
 <body class="container">
+    <div class="greeting" style="position:absolute; top:20px; width:100%; text-align:center; z-index:10; color:white; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
+      <h1 id="greeting-title" style="font-size:2.5rem;"></h1>
+      <p id="greeting-message" style="font-size:1.2rem;"></p>
+    </div>
+    
     <div class="night"></div>
     <div class="flowers">
       <div class="flower flower--1">
@@ -308,5 +313,34 @@
     </div>
     
     <script src="main.js"></script>
+        <script>
+    function showGreeting() {
+        const titleEl = document.getElementById('greeting-title');
+        const msgEl = document.getElementById('greeting-message');
+
+        const now = new Date();
+        const hour = now.getHours();
+
+        let title = '';
+        let message = '';
+
+        if(hour >= 5 && hour < 12){
+            title = 'Good Morning Avias 🌞';
+            message = 'Have a bright and beautiful day!';
+        } else if(hour >= 12 && hour < 18){
+            title = 'Good Afternoon Avias ☀️';
+            message = 'Hope your day is going well!';
+        } else {
+            title = 'Good Evening Avias 🌙';
+            message = 'Time to relax and unwind!';
+        }
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+    }
+
+    showGreeting();
+    setInterval(showGreeting, 60000);
+        </script>
   </body>
 </html>
